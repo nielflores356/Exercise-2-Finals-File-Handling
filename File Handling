@@ -1,0 +1,45 @@
+# Niel V. Flores                                  BSIT - IT1R2
+# Exercise 2: File Handling
+
+try:
+    note = input("Enter a short note/message: ")
+
+    with open("notes.txt", "w") as file:
+        file.write(note + "\n")
+
+    print("\nMessage saved successfully!")
+
+except Exception as e:
+    print("Error while writing to file:", e)
+
+
+try:
+    with open("notes.txt", "r") as file:
+        content = file.read()
+
+    print("\nContent of the file:")
+    print(content)
+
+except FileNotFoundError:
+    print("Error: File not found.")
+except Exception as e:
+    print("Error while reading file:", e)
+
+
+try:
+    new_note = input("\nEnter another note to append: ")
+
+    with open("notes.txt", "a") as file:
+        file.write(new_note + "\n")
+
+    print("\nNote appended successfully!")
+
+
+    with open("notes.txt", "r") as file:
+        updated_content = file.read()
+
+    print("\nUpdated file content:")
+    print(updated_content)
+
+except Exception as e:
+    print("Error while appending to file:", e)
